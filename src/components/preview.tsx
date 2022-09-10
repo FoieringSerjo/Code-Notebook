@@ -11,10 +11,13 @@ interface PreviewProps {
 //     ${code}
 //   </script>
 //   `;
+
+//TODO: It's a workaround for preview window to not hover over the resizable bar.
+//TODO: <style> html { background-color: white; }</style>
 const html = `
 <html>
   <head>
-    <style>html { background-color: white; }</style>
+    <style> html { background-color: white; }</style>
   </head>
   <body>
     <div id="root"></div>
