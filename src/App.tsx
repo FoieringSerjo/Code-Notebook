@@ -1,15 +1,14 @@
 import 'bulmaswatch/superhero/bulmaswatch.min.css';
 // import CodeCell from './components/code-cell';
 import { Provider } from 'react-redux';
-import { store } from '../src/components/state';
-import TextEditor from './components/text-editor';
+import { store } from './state';
+import CellList from './components/cell-list';
 
 const App = () => {
   return (
     <Provider store={store}>
       <div>
-        <TextEditor />
-        {/* <CodeCell /> */}
+        <CellList />
         {/* <CodeCell /> */}
       </div>
     </Provider>
