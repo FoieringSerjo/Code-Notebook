@@ -19,7 +19,7 @@ const TextEditor: React.FC<TextEditorProps> = ({ cell }) => {
         console.log('Element clicked on is inside editor');
         return;
       }
-      console.log('Element clicked is not inside editor');
+      // console.log('Element clicked is not inside editor');
 
       setEditing(false);
     };

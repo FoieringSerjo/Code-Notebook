@@ -1,14 +1,17 @@
+import { Dispatch } from 'redux';
 import { ActionType } from '../action-types';
 import {
   UpdateCellAction,
   DeleteCellAction,
   MoveCellAction,
   InsertCellAfterAction,
+  Action,
   Direction,
 } from '../actions';
 import { CellTypes } from '../cell';
+import bundler from '../../bundler';
 
-//TODO: Must to return an action that satisfies the actions interface for that need to export the interfaces from actions.
+//Highlight: Must to return an action that satisfies the actions interface for that need to export the interfaces from actions.
 export const updateCell = (id: string, content: string): UpdateCellAction => {
   return {
     type: ActionType.UPDATE_CELL,
@@ -43,5 +46,26 @@ export const insertCellAfter = (id: string | null, cellType: CellTypes): InsertC
       id,
       type: cellType,
     },
+  };
+};
+
+export const createBundle = (cellId: string, input: string) => {
+  return async (dispatch: Dispatch<Action>) => {
+    dispatch({
+      type: ActionType.BUNDLE_START,
+      payload: {
+        cellId,
+      },
+    });
+
+    const result = await bundler(input);
+
+    dispatch({
+      type: ActionType.BUNDLE_COMPLETE,
+      payload: {
+        cellId,
+        bundle: result,
+      },
+    });
   };
 };
